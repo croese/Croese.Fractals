@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("Croese.Fractals.TurtleGraphics")]
+[assembly: AssemblyTitle("Croese.Fractals.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Croese.Fractals.TurtleGraphics")]
+[assembly: AssemblyProduct("Croese.Fractals.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 
-[assembly: Guid("c1f95027-58ac-4520-b7f4-c16546f405f6")]
+[assembly: Guid("6d9735fe-6ecc-42a8-90e8-25fbac81b41d")]
 
 // Version information for an assembly consists of the following four values:
 //
