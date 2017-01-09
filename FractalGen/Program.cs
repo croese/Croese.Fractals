@@ -15,6 +15,12 @@ namespace FractalGen
 
         [Option('n', "name", HelpText = "The name of the fractal to generate", Required = true)]
         public string FractalName { get; set; }
+
+        [Option('w', "width", DefaultValue = 700, HelpText = "Canvas width")]
+        public int Width { get; set; }
+
+        [Option('h', "height", DefaultValue = 700, HelpText = "Canvas height")]
+        public int Height { get; set; }
     }
 
     internal class Program
@@ -28,7 +34,7 @@ namespace FractalGen
                 if (options.Generation < 0)
                     return Error(usage);
 
-                Console.WriteLine(RunFractal(options.FractalName, options.Generation));
+                Console.WriteLine(RunFractal(options.Width, options.Height, options.FractalName, options.Generation));
             }
             else
             {
@@ -38,10 +44,8 @@ namespace FractalGen
             return 0;
         }
 
-        private static string RunFractal(string name, int generation)
+        private static string RunFractal(int width, int height, string name, int generation)
         {
-            var width = 700;
-            var height = 700;
             var ctx = new SvgContext(width, height);
 
             double initialX;
@@ -55,7 +59,16 @@ namespace FractalGen
 
             switch (name)
             {
-                case "kochcurve":
+                case "koch-curve":
+                    initialX = 0;
+                    initialY = height / 2D;
+                    stepSize = 8;
+                    initialAngle = 0;
+                    turnAngle = 60;
+                    lsys.AddProduction('F', "F+F--F+F");
+                    initialState = "F";
+                    break;
+                case "koch-curve-right":
                     initialX = 0;
                     initialY = height / 2D;
                     stepSize = 8;
@@ -64,7 +77,7 @@ namespace FractalGen
                     lsys.AddProduction('F', "F+F-F-F+F");
                     initialState = "F";
                     break;
-                case "sierpinski":
+                case "sierpinski-arrow":
                     initialX = 0;
                     initialY = height;
                     stepSize = 2;
@@ -73,6 +86,16 @@ namespace FractalGen
                     lsys.AddProduction('F', "G-F-G");
                     lsys.AddProduction('G', "F+G+F");
                     initialState = "F";
+                    break;
+                case "sierpinski-tri":
+                    initialX = width / 2D;
+                    initialY = height / 4D;
+                    stepSize = 10;
+                    initialAngle = 0;
+                    turnAngle = 60;
+                    lsys.AddProduction('F', "FF");
+                    lsys.AddProduction('X', "--FXF++FXF++FXF--");
+                    initialState = "FXF--FF--FF";
                     break;
                 case "plant1":
                     initialX = width / 2D;
@@ -93,7 +116,7 @@ namespace FractalGen
                     lsys.AddProduction('F', "FF-[-F+F+F]+[+F-F-F]");
                     initialState = "F";
                     break;
-                case "dragoncurve":
+                case "dragon-curve":
                     initialX = width / 2D;
                     initialY = height / 2D;
                     stepSize = 4;
@@ -103,7 +126,7 @@ namespace FractalGen
                     lsys.AddProduction('1', "F0-1");
                     initialState = "F0";
                     break;
-                case "hexgospercurve":
+                case "hex-gosper-curve":
                     initialX = width / 2D;
                     initialY = height / 2D;
                     stepSize = 6;
@@ -112,6 +135,43 @@ namespace FractalGen
                     lsys.AddProduction('F', "F-G--G+F++FF+G-");
                     lsys.AddProduction('G', "+F-GG--G-F++F+G");
                     initialState = "F";
+                    break;
+                case "peano-curve":
+                    initialX = width / 2D;
+                    initialY = height / 2D;
+                    stepSize = 4;
+                    initialAngle = 0;
+                    turnAngle = 90;
+                    lsys.AddProduction('F', "F+F-F-F-F+F+F+F-F");
+                    initialState = "F";
+                    break;
+                case "quad-koch-island":
+                    initialX = width /2D;
+                    initialY = height / 2D;
+                    stepSize = 3;
+                    initialAngle = 0;
+                    turnAngle = 90;
+                    lsys.AddProduction('F', "F-F+F+FFF-F-F+F");
+                    initialState = "F+F+F+F";
+                    break;
+                case "32-segment-curve":
+                    initialX = width / 2D;
+                    initialY = height / 2D;
+                    stepSize = 2;
+                    initialAngle = 0;
+                    turnAngle = 90;
+                    lsys.AddProduction('F', "-F+F-F-F+F+FF-F+F+FF+F-F-FF+FF-FF+F+F-FF-F-F+FF-F-F+F+F-F+");
+                    initialState = "F+F+F+F";
+                    break;
+                case "sierpinski-arrow-alt":
+                    initialX = width / 4D;
+                    initialY = height;
+                    stepSize = 2;
+                    initialAngle = 0;
+                    turnAngle = 60;
+                    lsys.AddProduction('X', "YF+XF+Y");
+                    lsys.AddProduction('Y', "XF-YF-X");
+                    initialState = "YF";
                     break;
                 default:
                     throw new ArgumentException($"Unknown fractal name: '{name}'");
