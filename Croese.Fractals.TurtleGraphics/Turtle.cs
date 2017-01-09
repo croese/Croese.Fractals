@@ -9,13 +9,14 @@ namespace Croese.Fractals.TurtleGraphics
         private readonly IGraphicsContext2D _ctx;
         private readonly Stack<TurtleState> _stateStack = new Stack<TurtleState>();
 
-        public Turtle(IGraphicsContext2D ctx, int stepSize = 1, int initialX = 0, int initialY = 0, string penColor = "black")
+        public Turtle(IGraphicsContext2D ctx, int stepSize = 1, double initialX = 0, double initialY = 0, double initialHeading = 0, string penColor = "black")
         {
             _ctx = ctx;
             PenColor = penColor;
             CurrentX = initialX;
             CurrentY = initialY;
             StepSize = stepSize;
+            Direction360 = initialHeading;
         }
 
         public double CurrentX { get; private set; }

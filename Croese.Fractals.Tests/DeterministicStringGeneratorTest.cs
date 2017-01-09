@@ -32,5 +32,13 @@ namespace Croese.Fractals.Tests
                 return Tuple.Create(parts[0][0], parts[1].Trim('\''));
             }).ToDictionary(p => p.Item1, p => p.Item2);
         }
+
+        [Fact]
+        public void CanAddProductions()
+        {
+            var gen = new DeterministicStringGenerator();
+            gen.AddProduction('A', "AB");
+            Assert.Equal("AB", gen.Generate("A", 1));
+        }
     }
 }

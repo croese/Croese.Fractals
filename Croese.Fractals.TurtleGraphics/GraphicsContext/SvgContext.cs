@@ -5,16 +5,16 @@ namespace Croese.Fractals.TurtleGraphics.GraphicsContext
 {
     public class SvgContext : IGraphicsContext2D
     {
-        private readonly int _height;
         private readonly List<SvgPathSegment> _segments = new List<SvgPathSegment>();
-        private readonly int _width;
 
         public SvgContext(int width = 300, int height = 300)
         {
-            _width = width;
-            _height = height;
+            Width = width;
+            Height = height;
         }
 
+        public int Height { get; }
+        public int Width { get; }
         public int IncreasingXMultiplier => 1;
         public int IncreasingYMultiplier => -1;
 
@@ -33,8 +33,8 @@ namespace Croese.Fractals.TurtleGraphics.GraphicsContext
         public override string ToString()
         {
             var path = string.Join(string.Empty, _segments.Select(x => x.ToString()));
-            var width = _width > 0 ? $"width=\"{_width}\"" : string.Empty;
-            var height = _height > 0 ? $"height=\"{_height}\"" : string.Empty;
+            var width = Width > 0 ? $"width=\"{Width}\"" : string.Empty;
+            var height = Height > 0 ? $"height=\"{Height}\"" : string.Empty;
             return
                 $"<svg version=\"1.1\" baseProfile=\"full\" {width} {height} xmlns=\"http://www.w3.org/2000/svg\">{path}</svg>";
         }

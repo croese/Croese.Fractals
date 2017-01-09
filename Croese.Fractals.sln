@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Croese.Fractals.Tests", "Cr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Croese.Fractals.LSystem", "Croese.Fractals.LSystem\Croese.Fractals.LSystem.csproj", "{A108C7D0-3DD8-479E-8E13-D979874CBD74}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FractalGen", "FractalGen\FractalGen.csproj", "{33169DFD-480B-4356-B6E1-BCFDD42CBC74}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A108C7D0-3DD8-479E-8E13-D979874CBD74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A108C7D0-3DD8-479E-8E13-D979874CBD74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A108C7D0-3DD8-479E-8E13-D979874CBD74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33169DFD-480B-4356-B6E1-BCFDD42CBC74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33169DFD-480B-4356-B6E1-BCFDD42CBC74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33169DFD-480B-4356-B6E1-BCFDD42CBC74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33169DFD-480B-4356-B6E1-BCFDD42CBC74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

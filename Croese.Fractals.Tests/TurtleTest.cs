@@ -94,12 +94,12 @@ namespace Croese.Fractals.Tests
         [Fact]
         public void TurtleStateFieldsInitializedInConstructor()
         {
-            var t = new Turtle(new TestContext(), 10, 5, 15, "red");
+            var t = new Turtle(new TestContext(), 10, 5, 15, 60, "red");
             Assert.Equal(10, t.StepSize);
             Assert.Equal(5, t.CurrentX);
             Assert.Equal(15, t.CurrentY);
             Assert.Equal("red", t.PenColor);
-            Assert.Equal(0, t.Direction360);
+            Assert.Equal(60, t.Direction360);
         }
     }
 }

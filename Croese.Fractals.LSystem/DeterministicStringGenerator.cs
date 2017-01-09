@@ -6,6 +6,11 @@ namespace Croese.Fractals.LSystem
     {
         private readonly IDictionary<char, string> _replacements;
 
+        public DeterministicStringGenerator()
+        {
+            _replacements = new Dictionary<char, string>();
+        }
+
         public DeterministicStringGenerator(IDictionary<char, string> replacements)
         {
             _replacements = replacements;
@@ -15,6 +20,12 @@ namespace Croese.Fractals.LSystem
         {
             string found;
             return _replacements.TryGetValue(symbol, out found) ? found : symbol.ToString();
+        }
+
+        public DeterministicStringGenerator AddProduction(char symbol, string replacement)
+        {
+            _replacements[symbol] = replacement;
+            return this;
         }
     }
 }
