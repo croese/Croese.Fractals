@@ -90,7 +90,7 @@ namespace FractalGen
                 case "sierpinski-tri":
                     initialX = width / 2D;
                     initialY = height / 4D;
-                    stepSize = 10;
+                    stepSize = 6;
                     initialAngle = 0;
                     turnAngle = 60;
                     lsys.AddProduction('F', "FF");
@@ -122,9 +122,9 @@ namespace FractalGen
                     stepSize = 4;
                     initialAngle = 0;
                     turnAngle = 90;
-                    lsys.AddProduction('0', "0+1F");
-                    lsys.AddProduction('1', "F0-1");
-                    initialState = "F0";
+                    lsys.AddProduction('X', "X+YF+");
+                    lsys.AddProduction('Y', "-FX-Y");
+                    initialState = "FX";
                     break;
                 case "hex-gosper-curve":
                     initialX = width / 2D;
@@ -146,7 +146,7 @@ namespace FractalGen
                     initialState = "F";
                     break;
                 case "quad-koch-island":
-                    initialX = width /2D;
+                    initialX = width / 2D;
                     initialY = height / 2D;
                     stepSize = 3;
                     initialAngle = 0;
@@ -172,6 +172,45 @@ namespace FractalGen
                     lsys.AddProduction('X', "YF+XF+Y");
                     lsys.AddProduction('Y', "XF-YF-X");
                     initialState = "YF";
+                    break;
+                case "peano-gosper-curve":
+                    initialX = width / 2D;
+                    initialY = height / 2D;
+                    stepSize = 4;
+                    initialAngle = 0;
+                    turnAngle = 60;
+                    lsys.AddProduction('X', "X+YF++YF-FX--FXFX-YF+");
+                    lsys.AddProduction('Y', "-FX+YFYF++YF+FX--FX-Y");
+                    initialState = "FX";
+                    break;
+                case "square-curve":
+                    initialX = width / 2D;
+                    initialY = height / 2D;
+                    stepSize = 4;
+                    initialAngle = 0;
+                    turnAngle = 90;
+                    lsys.AddProduction('X', "XF-F+F-XF+F+XF-F+F-X");
+                    initialState = "F+XF+F+XF";
+                    break;
+                case "hilbert-curve":
+                    initialX = width / 2D;
+                    initialY = height / 2D;
+                    stepSize = 6;
+                    initialAngle = 0;
+                    turnAngle = 90;
+                    lsys.AddProduction('L', "+RF-LFL-FR+");
+                    lsys.AddProduction('R', "-LF+RFR+FL-");
+                    initialState = "L";
+                    break;
+                case "hilbert-curve-2":
+                    initialX = width / 2D;
+                    initialY = height / 2D;
+                    stepSize = 4;
+                    initialAngle = 0;
+                    turnAngle = 90;
+                    lsys.AddProduction('X', "XFYFX+F+YFXFY-F-XFYFX");
+                    lsys.AddProduction('Y', "YFXFY-F-XFYFX+F+YFXFY");
+                    initialState = "X";
                     break;
                 default:
                     throw new ArgumentException($"Unknown fractal name: '{name}'");
