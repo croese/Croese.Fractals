@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
 using CommandLine;
 using CommandLine.Text;
 using Croese.Fractals.LSystem;
@@ -213,7 +215,22 @@ namespace FractalGen
                     initialState = "X";
                     break;
                 default:
-                    throw new ArgumentException($"Unknown fractal name: '{name}'");
+                    var fileName = $"{name}.lsys";
+                    var files = Directory.GetFiles(Directory.GetCurrentDirectory());
+                    if (files.All(s => Path.GetFileName(s) != fileName))
+                        throw new ArgumentException($"Unknown fractal name: '{name}'");
+
+                    var file = File.OpenText(fileName);
+                    var parsed = new FractalDefinitionParser().Parse(file);
+                    initialX = parsed.StartX;
+                    initialY = parsed.StartY;
+                    stepSize = parsed.StepSize;
+                    initialAngle = parsed.StartAngle;
+                    turnAngle = parsed.TurnAngle;
+                    initialState = parsed.Axiom;
+                    foreach (var kvp in parsed.Rules)
+                        lsys.AddProduction(kvp.Key, kvp.Value);
+                    break;
             }
 
             var turtle = new Turtle(ctx, stepSize, initialX, initialY, initialAngle);
