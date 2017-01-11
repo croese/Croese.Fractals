@@ -48,6 +48,7 @@
     <Compile Include="FractalDefinitionParser.cs" />
     <Compile Include="LindenmayerStringGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StochasticStringGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
