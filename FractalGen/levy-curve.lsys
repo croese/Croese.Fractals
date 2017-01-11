@@ -1,0 +1,12 @@
+﻿[Parameters]
+Height = 800
+Width = 800
+StartX = 300
+StartY = 350
+StepSize = 8
+StartAngle = 0
+TurnAngle = 45
+Axiom = 'F'
+
+[Rules]
+F = '-F++F-'
